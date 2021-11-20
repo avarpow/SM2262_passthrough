@@ -14,3 +14,5 @@ Fix bug when PCI passthrough:
 
 更新：bugreport没看仔细，不用重新编译内核了，在qemu运行参数增加args: -set device.hostpci1.x-msix-relocation=bar2 即可直通成功
 原理都是是对pci设备reset
+
+再更新：用上文中的方法能读到盘，但是windwos boot manager不能成功启动，失败。
