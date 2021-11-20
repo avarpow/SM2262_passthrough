@@ -44,10 +44,10 @@ index 812bfc32e..082213788 100644
 + * Link: https://bugzilla.kernel.org/show_bug.cgi?id=202055
 + *
 + * This controller is known to be used in the Intel 760p (8086:f1a6) and
-+ * ADATA XPG SX8200 (126f:2262), the latter making use of the native PCI
-+ * vendor and device ID from Silicon Motion.  Also believed to be affected
-+ * are the Mushkin Pilot, HP EX920, and Western Digital Black, though it's
-+ * not known if any of these override the native device ID as Intel does.
++ * ADATA XPG SX8200 (126f:2262) aigo P2000 (126f:2263), the latter making use of 
++ * the native PCI vendor and device ID from Silicon Motion.  Also believed to be
++ * affected are the Mushkin Pilot, HP EX920, and Western Digital Black, though
++ * it's not known if any of these override the native device ID as Intel does.
 + */
 +static int prefer_bus_reset(struct pci_dev *dev, int probe)
 +{
@@ -62,6 +62,7 @@ index 812bfc32e..082213788 100644
  	{ PCI_VENDOR_ID_SAMSUNG, 0xa804, nvme_disable_and_flr },
  	{ PCI_VENDOR_ID_INTEL, 0x0953, delay_250ms_after_flr },
 +	{ 0x126f, 0x2262, prefer_bus_reset },
++	{ 0x126f, 0x2263, prefer_bus_reset },
 +	{ PCI_VENDOR_ID_INTEL, 0xf1a6, prefer_bus_reset },
  	{ PCI_VENDOR_ID_CHELSIO, PCI_ANY_ID,
  		reset_chelsio_generic_dev },
